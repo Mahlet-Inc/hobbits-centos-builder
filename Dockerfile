@@ -1,4 +1,4 @@
-FROM centos:7
+FROM centos:7.2.1511
 
 RUN (curl -sL https://rpm.nodesource.com/setup_12.x | bash -) \
     && yum clean all -y \
