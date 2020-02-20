@@ -8,3 +8,7 @@ RUN (curl -sL https://rpm.nodesource.com/setup_12.x | bash -) \
     && yum autoremove -y \
     && yum clean all -y \
     && python3 -m pip install aqtinstall==0.7.1
+
+RUN yum -y remove git* \
+    && yum -y install  https://centos7.iuscommunity.org/ius-release.rpm \
+    && yum -y install  git2u-all
