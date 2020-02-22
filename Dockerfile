@@ -15,10 +15,10 @@ RUN yum -y remove git* \
 
 ADD qt5 /qt5
 
-RUN cat /etc/resolv.conf > /etc/resolv.conf.nope \
+RUN cd /qt5 \
+    && curl -L -O "https://download.qt.io/official_releases/qt/5.12/5.12.6/qt-opensource-linux-x64-5.12.6.run" \
+    && cat /etc/resolv.conf > /etc/resolv.conf.nope \
     && echo "" > /etc/resolv.conf \
-    && cd /qt5 \
-    && curl curl -L -O "https://download.qt.io/official_releases/qt/5.12/5.12.6/qt-opensource-linux-x64-5.12.6.run" \
     && chmod +x qt-opensource-linux-x64-5.12.6.run \
     && ./qt-opensource-linux-x64-5.12.6.run --platform minimal --script cli-install-script.qs --verbose --no-proxy \
     && rm qt-opensource-linux-x64-5.12.6.run \
