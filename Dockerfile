@@ -13,16 +13,9 @@ RUN yum -y remove git* \
     && yum -y install  https://centos7.iuscommunity.org/ius-release.rpm \
     && yum -y install  git2u-all
 
-ADD qt5 /qt5
+RUN yum install -y qt5-qtbase-devel \
+    && yum autoremove -y \
+    && yum clean all -y
 
-RUN cd /qt5 \
-    && curl -L -O "https://download.qt.io/official_releases/qt/5.12/5.12.6/qt-opensource-linux-x64-5.12.6.run" \
-    && cat /etc/resolv.conf > /etc/resolv.conf.nope \
-    && echo "" > /etc/resolv.conf \
-    && chmod +x qt-opensource-linux-x64-5.12.6.run \
-    && ./qt-opensource-linux-x64-5.12.6.run --platform minimal --script cli-install-script.qs --verbose --no-proxy \
-    && rm qt-opensource-linux-x64-5.12.6.run \
-    && cat /etc/resolv.conf.nope > /etc/resolv.conf \
-    && rm /etc/resolv.conf.nope
-
-ENV QTDIR /Qt/5.12.6/gcc_64
+ENV QMAKE_BIN /usr/bin/qmake-qt5
+ENV QT_LIB_DIR /lib64
