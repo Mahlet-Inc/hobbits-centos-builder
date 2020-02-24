@@ -19,3 +19,4 @@ RUN yum install -y qt5-qtbase-devel \
 
 ENV QMAKE_BIN /usr/bin/qmake-qt5
 ENV QT_LIB_DIR /lib64
+ENV QT_PLATFORMS_DIR /usr/lib64/qt5/plugins/platforms/
