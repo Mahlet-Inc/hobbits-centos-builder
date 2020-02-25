@@ -1,0 +1,17 @@
+[base74]
+name=My base packages for CentOS 7.4.1708
+baseurl=http://vault.centos.org/centos/7.4.1708/os/x86_64/
+enabled=1
+gpgcheck=0
+
+[updates74]
+name=My updates packages for CentOS 7.4.1708
+baseurl=http://vault.centos.org/centos/7.4.1708/updates/x86_64/
+enabled=1
+gpgcheck=0
+
+[extras74]
+name=My extras packages for CentOS 7.4.1708
+baseurl=http://vault.centos.org/centos/7.4.1708/extras/x86_64/
+enabled=1
+gpgcheck=0

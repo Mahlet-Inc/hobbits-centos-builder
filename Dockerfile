@@ -1,14 +1,17 @@
-FROM centos:7.2.1511
+FROM centos:7.4.1708
 
-RUN (curl -sL https://rpm.nodesource.com/setup_12.x | bash -) \
+ADD centos74.repo /etc/yum.repos.d/centos74.repo
+
+RUN rm -f /etc/yum.repos.d/CentOS-Base.repo \
+    && (curl -sL https://rpm.nodesource.com/setup_12.x | bash -) \
     && yum clean all -y \
-    && yum update -y \
     && yum -y install  https://centos7.iuscommunity.org/ius-release.rpm \
     && yum group install -y "Development Tools" \
     && yum -y remove git* \
     && yum install -y fftw-devel mesa-libGL-devel python3 pkgconfig nodejs git2u-all which libxcb libxcb-devel xcb-util xcb-util-devel mesa-libGL-devel libxkbcommon-devel freetype-devel fontconfig-devel \
     && yum autoremove -y \
-    && yum clean all -y
+    && yum clean all -y \
+    && cat  /etc/redhat-release
 
 RUN curl -L -O "http://qt.mirror.constant.com/archive/qt/5.12/5.12.6/single/qt-everywhere-src-5.12.6.tar.xz" \
     && tar -xf qt-everywhere-src-5.12.6.tar.xz \
