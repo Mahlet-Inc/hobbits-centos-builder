@@ -1,5 +1,10 @@
 FROM centos:7.2.1511
 
+RUN head -18 /etc/yum.repos.d/CentOS-Base.repo > /etc/yum.repos.d/CentOS-72.repo \
+    && sed -i 's/^#base.*/baseurl=http:\/\/vault.centos.org\/7.2.1511\/os\/x86_64\//g' /etc/yum.repos.d/CentOS-72.repo \
+    && rm -f /etc/yum.repos.d/CentOS-Base.repo \
+    && sed -i '/^mirror.*/d' /etc/yum.repos.d/CentOS-72.repo
+
 RUN (curl -sL https://rpm.nodesource.com/setup_12.x | bash -) \
     && yum clean all -y \
     && yum update -y \
