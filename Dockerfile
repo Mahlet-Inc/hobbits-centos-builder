@@ -5,10 +5,10 @@ ADD centos74.repo /etc/yum.repos.d/centos74.repo
 RUN rm -f /etc/yum.repos.d/CentOS-Base.repo \
     && (curl -sL https://rpm.nodesource.com/setup_12.x | bash -) \
     && yum clean all -y \
-    && yum -y install  https://centos7.iuscommunity.org/ius-release.rpm \
+    && yum -y install  https://repo.ius.io/ius-release-el7.rpm\
     && yum group install -y "Development Tools" \
     && yum -y remove git* \
-    && yum install -y fftw-devel mesa-libGL-devel python3 pkgconfig nodejs git2u-all which libxcb libxcb-devel xcb-util xcb-util-devel mesa-libGL-devel libxkbcommon-devel freetype-devel fontconfig-devel \
+    && yum install -y mesa-libGL-devel python3-devel pkgconfig nodejs git2u-all which libxcb libxcb-devel xcb-util xcb-util-devel mesa-libGL-devel libxkbcommon-devel freetype-devel fontconfig-devel \
     && yum autoremove -y \
     && yum clean all -y \
     && cat  /etc/redhat-release
@@ -33,3 +33,5 @@ RUN curl -L -O "http://qt.mirror.constant.com/archive/qt/5.12/5.12.6/single/qt-e
 ENV QMAKE_BIN /Qt/bin/qmake
 ENV QT_LIB_DIR /Qt/lib
 ENV QT_PLATFORMS_DIR /Qt/plugins/platforms
+
+RUN yum install -y fftw-devel libpcap-devel
