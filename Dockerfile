@@ -39,3 +39,15 @@ RUN yum install -y fftw-devel libpcap-devel
 RUN yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm \
     && yum -y install git \
     && git --version
+
+RUN yum install -y \
+    zlib-devel \
+    bzip2-devel \
+    xz-devel \
+    ncurses-devel \
+    readline-devel \
+    sqlite-devel \
+    openssl-devel \
+    gdbm-devel \
+    libffi-devel \
+    uuid-devel
