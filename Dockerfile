@@ -56,7 +56,7 @@ RUN curl -L -O "http://www.fftw.org/fftw-3.3.8.tar.gz" \
     && tar -xf fftw-3.3.8.tar.gz \
     && rm fftw-3.3.8.tar.gz \
     && cd fftw-3.3.8 \
-    && ./configure --enable-threads \
+    && ./configure --enable-shared --enable-threads \
     && gmake -j$(nproc) \
     && gmake install \
     && cd .. \
