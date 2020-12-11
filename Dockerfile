@@ -1,4 +1,4 @@
-FROM centos:7.4.1708
+FROM docker.io/centos:7.4.1708
 
 ADD centos74.repo /etc/yum.repos.d/centos74.repo
 
@@ -34,7 +34,7 @@ ENV QMAKE_BIN /Qt/bin/qmake
 ENV QT_LIB_DIR /Qt/lib
 ENV QT_PLATFORMS_DIR /Qt/plugins/platforms
 
-RUN yum install -y fftw-devel libpcap-devel
+RUN yum install -y libpcap-devel
 
 RUN yum -y install https://packages.endpoint.com/rhel/7/os/x86_64/endpoint-repo-1.7-1.x86_64.rpm \
     && yum -y install git \
@@ -51,3 +51,13 @@ RUN yum install -y \
     gdbm-devel \
     libffi-devel \
     uuid-devel
+
+RUN curl -L -O "http://www.fftw.org/fftw-3.3.8.tar.gz" \
+    && tar -xf fftw-3.3.8.tar.gz \
+    && rm fftw-3.3.8.tar.gz \
+    && cd fftw-3.3.8 \
+    && ./configure --enable-threads \
+    && gmake -j$(nproc) \
+    && gmake install \
+    && cd .. \
+    && rm -rf fftw-3.3.8
