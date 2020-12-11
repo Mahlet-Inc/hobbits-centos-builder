@@ -61,3 +61,5 @@ RUN curl -L -O "http://www.fftw.org/fftw-3.3.8.tar.gz" \
     && gmake install \
     && cd .. \
     && rm -rf fftw-3.3.8
+
+ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
