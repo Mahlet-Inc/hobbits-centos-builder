@@ -50,7 +50,7 @@ RUN yum install -y \
     openssl-devel \
     gdbm-devel \
     libffi-devel \
-    uuid-devel
+    libuuid-devel
 
 RUN curl -L -O "http://www.fftw.org/fftw-3.3.8.tar.gz" \
     && tar -xf fftw-3.3.8.tar.gz \
