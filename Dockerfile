@@ -62,4 +62,9 @@ RUN curl -L -O "http://www.fftw.org/fftw-3.3.8.tar.gz" \
     && cd .. \
     && rm -rf fftw-3.3.8
 
+
+RUN yum install -y \
+    cmake3 \
+    ninja-build
+
 ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
