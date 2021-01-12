@@ -68,3 +68,10 @@ RUN yum install -y \
     ninja-build
 
 ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
+
+RUN mkdir bins \
+    && echo "#!/bin/bash" >> "bins/cmake" \
+    && echo "exec cmake3 \"\$@\"" >> "bins/cmake" \
+    && chmod -R 755 bins
+
+ENV PATH $PATH:/bins
