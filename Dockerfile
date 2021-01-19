@@ -65,6 +65,7 @@ RUN curl -L -O "https://www.tcpdump.org/release/libpcap-1.10.0.tar.gz" \
     && cd libpcap-1.10.0 \
     && ./configure \
     && gmake -j$(nproc) \
+    && sed -i '/INSTALL_DATA.*libpcap.a\|RANLIB.*libpcap.a/ s/^/#/' Makefile \
     && gmake install \
     && cd .. \
     && rm -rf libpcap-1.10.0
