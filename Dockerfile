@@ -75,4 +75,6 @@ RUN mkdir bins \
     && echo "exec cmake3 \"\$@\"" >> "bins/cmake" \
     && chmod -R 755 bins
 
+RUN yum install -y python3-pip
+
 ENV PATH $PATH:/bins
