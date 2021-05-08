@@ -77,4 +77,6 @@ RUN mkdir bins \
 
 RUN python3 -m ensurepip
 
+RUN python3 -m pip install conan
+
 ENV PATH $PATH:/bins
