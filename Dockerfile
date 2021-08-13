@@ -67,7 +67,7 @@ RUN yum install -y \
     cmake3 \
     ninja-build \
     patchelf \
-    libusb-devel
+    libusbx-devel
 
 ENV PKG_CONFIG_PATH /usr/local/lib/pkgconfig
 
