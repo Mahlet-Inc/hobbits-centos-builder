@@ -1,0 +1,15 @@
+cmake_minimum_required(VERSION 3.4)
+project(pffft C)
+
+include(GNUInstallDirs)
+
+add_library(${PROJECT_NAME} SHARED pffft.c)
+set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER pffft.h)
+find_library(MATH_LIBRARY m)
+if(MATH_LIBRARY)
+  target_link_libraries(${PROJECT_NAME} PRIVATE ${MATH_LIBRARY})
+endif()
+
+install(TARGETS ${PROJECT_NAME}
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})

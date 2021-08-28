@@ -80,4 +80,17 @@ RUN python3 -m ensurepip
 
 RUN python3 -m pip install conan
 
+ADD pffft_cmake.txt /pffft_cmake.txt
+
+RUN curl -L -O https://bitbucket.org/jpommier/pffft/get/ed78751d751e.zip \
+    && unzip ed78751d751e.zip \
+    && rm ed78751d751e.zip \
+    && cd jpommier-pffft-ed78751d751e/ \
+    && mv /pffft_cmake.txt ./CMakeLists.txt \
+    && cmake3 . \
+    && cmake3 --build . \
+    && cmake3 --install . \
+    && cd .. \
+    && rm -rf jpommier-pffft-ed78751d751e/
+
 ENV PATH $PATH:/bins
